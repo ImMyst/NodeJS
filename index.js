@@ -132,15 +132,26 @@ app.get('/create', (req, res) => {
 });
 
 app.post('/create', (req, res) => {
-    const { name, description, price, stock} = req.body;
+    const { name, description, price, stock } = req.body;
     Article
         .sync()
         .then(() => Article.create({ name, description, price, stock}))
         .then(() => res.redirect('/'));
 });
 
+app.get('/detail/:articleId', (req, res) => {
+    const { name, description, price, stock } = req.body;
+    Article
+        .sync()
+        .then(() => Article.findOne({where: {id: req.params.articleId}}))
+        .then((article) => res.render('detail'));
+});
 
-
-
+// app.post('/article-details/:articleId/resolved', (req, res) => {
+//     Article
+//         .sync()
+//         .then(() => Article.update({ resolvedAt: new Date()}, {where: {id: req.params.articleId}}))
+//         .then(()=> res.redirect('/article-details/'+ req.params.articleId));
+// });
 
 app.listen(3000);

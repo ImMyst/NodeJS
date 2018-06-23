@@ -9,8 +9,15 @@ html
       div(class="container")
         h2 All Articles
         for article  in articles
-          span #{article.name}	&nbsp;
-          span #{article.price}	&nbsp;
-          span #{article.stock}	&nbsp;
-          a(href="/detail/" + article.id)
-            button(class="btn btn-primary") Article details 
+          table(class="table table-striped")
+            tbody
+              tr
+                td 
+                  span #{article.name}	&nbsp;
+                td
+                  span #{article.price}	&nbsp;
+                td
+                  span #{article.stock}	&nbsp;
+                td 
+                  a(href="/detail/" + article.id)
+                    button(class="btn btn-primary") Article details 
