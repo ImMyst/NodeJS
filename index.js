@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', 'public/views')
 app.use(express.static('public'));
 
-const Article = db.define('articles', {
+const Article = db.define('article', {
         name : { type: Sequelize.STRING},
         description : { type: Sequelize.STRING },
         price : { type: Sequelize.INTEGER },
@@ -89,13 +89,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.render('list');
-});
+app.get('/',(req,res) => {
+    Article
+        .sync()
+        .then(() => {
+            return Article.findAll();
+          })
+                .then((articles) => {
+                    res.render( 'list', { articles });
+                });
+        });
 
-app.get('/create', (req, res) => {
-    res.render('create');
-});
 
 app.get('/login', (req, res) => {
     res.render('login');
@@ -121,5 +125,22 @@ app.post('/register', (req, res) => {
 
         .then(() => res.redirect('/login'));
 });
+
+
+app.get('/create', (req, res) => {
+    res.render('create');
+});
+
+app.post('/create', (req, res) => {
+    const { name, description, price, stock} = req.body;
+    Article
+        .sync()
+        .then(() => Article.create({ name, description, price, stock}))
+        .then(() => res.redirect('/'));
+});
+
+
+
+
 
 app.listen(3000);

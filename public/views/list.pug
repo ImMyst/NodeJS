@@ -6,4 +6,11 @@ html
     main
       div(class="container")
         h1 Cdiscount
-        
+      div(class="container")
+        h2 All Articles
+        for article  in articles
+          span #{article.name}	&nbsp;
+          span #{article.price}	&nbsp;
+          span #{article.stock}	&nbsp;
+          a(href="/detail/" + article.id)
+            button(class="btn btn-primary") Article details 
