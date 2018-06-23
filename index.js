@@ -20,10 +20,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', 'public/views')
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.render('list');
-});
-
 const Article = db.define('articles', {
         name : { type: Sequelize.STRING},
         description : { type: Sequelize.STRING },
@@ -93,5 +89,33 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static('public'));
 
+app.get('/', (req, res) => {
+    res.render('list');
+});
+
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+
+app.post('/login',
+    passport.authenticate('local', {
+        failureRedirect: '/',
+        sucessRedirect: '/login'
+    })
+);
+
+app.get('/register',(req,res) => {
+    res.render('register');
+});
+
+app.post('/register', (req, res) => {
+    const { username, email, password} = req.body;
+    User
+        .sync()
+        .then(() => {return User.count()})
+            User.create({ username, email, password })
+
+        .then(() => res.redirect('/login'));
+});
 
 app.listen(3000);
