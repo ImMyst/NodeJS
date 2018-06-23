@@ -144,13 +144,14 @@ app.get('/detail/:articleId', (req, res) => {
     Article
         .sync()
         .then(() => Article.findOne({where: {id: req.params.articleId}}))
-        .then((article) => res.render('detail'));
+        .then((article) => res.render('detail', {article}));
 });
 
-// app.post('/article-details/:articleId/resolved', (req, res) => {
+// app.post('/details/:articleId', (req, res) => {
 //     Article
 //         .sync()
-//         .then(() => Article.update({ resolvedAt: new Date()}, {where: {id: req.params.articleId}}))
+//         .then(() => Article.update({ stock: let a = 1;
+//           a--;, {where: {id: req.params.articleId}}))
 //         .then(()=> res.redirect('/article-details/'+ req.params.articleId));
 // });
 
