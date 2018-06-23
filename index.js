@@ -93,6 +93,10 @@ app.get('/', (req, res) => {
     res.render('list');
 });
 
+app.get('/create', (req, res) => {
+    res.render('create');
+});
+
 app.get('/login', (req, res) => {
     res.render('login');
 });

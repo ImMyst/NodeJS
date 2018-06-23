@@ -5,11 +5,17 @@ html
 
   body
     main
-      form(action='/register' method="post")
-            label(for="email") Register with your e-mail address
-            input(type="email" name="email" placeholder="Ex : exemple@exemple.com")
-            label(for="username") Username
-            input(type="text" name="username" placeholder="Ex : Username")
-            label(for="password") Password
-            input(type="password" name="password" placeholder="Ex : password")
-            input(class="btn btn-primary" type="submit" value="Register")
+      div(class="container")
+        h1 Register
+        form(action='/register' method="post")
+          div(class="form-group")
+              label(for="email") Register with your e-mail address
+              input(type="email" name="email" placeholder="Ex : exemple@exemple.com")
+          div(class="form-group")
+              label(for="username") Username
+              input(type="text" name="username" placeholder="Ex : Username")
+          div(class="form-group")
+              label(for="password") Password
+              input(type="password" name="password" placeholder="Ex : password")
+          div(class="form-check")
+              input(class="btn btn-primary" type="submit" value="Register")

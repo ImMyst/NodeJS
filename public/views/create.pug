@@ -1,7 +1,27 @@
 html
   head
     title Create article
-    link(rel="stylesheet", href="/css/home.css")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
 
   body
     main
+      div(class="container")
+        h1 Add Article
+      div(class="container")
+        form(action="create" method="post")
+          div(class="form-group")
+            label(for="name") Name
+            input(type="text" name="name" placeholder="Ex: Enceinte portable JBL")
+          div(class="form-group")
+            label(for="price") Price
+            input(type="number" name="price" min="0.01" step="0.01")
+            span $
+          div(class="form-group")
+            label(for="description") Description
+            textarea(type="text" name="description" placeholder="Ex: Enceinte bluetooth JBL ...")
+          div(class="form-group")
+            label(for="stock") Stock 
+            input(type="number" name="stock" min="0")
+          div(class="form-check")
+            input(class="btn btn-primary" type="submit" value="Post your Article")
+          
