@@ -147,12 +147,11 @@ app.get('/detail/:articleId', (req, res) => {
         .then((article) => res.render('detail', {article}));
 });
 
-// app.post('/details/:articleId', (req, res) => {
+// app.post('/detail/:articleId/decrement-stock', (req, res) => {
 //     Article
 //         .sync()
-//         .then(() => Article.update({ stock: let a = 1;
-//           a--;, {where: {id: req.params.articleId}}))
-//         .then(()=> res.redirect('/article-details/'+ req.params.articleId));
+//         .then(() => Article.update({ stock: let a = 1; a--;, {where: {id: req.params.articleId}}))
+//         .then(()=> res.redirect('/detail/'+ req.params.articleId));
 // });
 
 app.listen(3000);
