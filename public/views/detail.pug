@@ -11,4 +11,5 @@ html
         h2 #{article.price}$
         span #{article.stock}x
         p #{article.description}
-        button(class="btn btn-primary") Buy
+        form(method="post" action="/details/" + article.id + "/decrement-stock")
+          button(class="btn btn-primary") Buy

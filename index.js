@@ -147,11 +147,15 @@ app.get('/detail/:articleId', (req, res) => {
         .then((article) => res.render('detail', {article}));
 });
 
-// app.post('/detail/:articleId/decrement-stock', (req, res) => {
-//     Article
-//         .sync()
-//         .then(() => Article.update({ stock: let a = 1; a--;, {where: {id: req.params.articleId}}))
-//         .then(()=> res.redirect('/detail/'+ req.params.articleId));
-// });
+app.post('/details/:articleId/decrement-stock', (req, res) => {
+  const { stock } = req.body;
+    Article
+        .sync()
+        .then(() => Article.findOne({where: {id: req.params.articleId}}))
+        .then((stock) => { stock.decrement ('stock'); })
+        .then(() => res.redirect('/'));
+});
+
+
 
 app.listen(3000);
