@@ -156,6 +156,4 @@ app.post('/details/:articleId/decrement-stock', (req, res) => {
         .then(() => res.redirect('/'));
 });
 
-
-
 app.listen(3000);
