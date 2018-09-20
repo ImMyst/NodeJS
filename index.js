@@ -7,7 +7,7 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const db = new Sequelize('rattrapage_nodejs', 'user', 'root', {
+const db = new Sequelize('rattrapage_nodejs', 'root', '', {
     host: 'localhost',
     dialect: 'mysql'
 });
