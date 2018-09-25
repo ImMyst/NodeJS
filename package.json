@@ -1,13 +1,13 @@
 {
   "name": "rattrapage",
   "version": "1.0.0",
-  "description": "",
+  "description": "Market site with NodeJS like Cdiscount for exemple",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "",
+  "author": "Titouan.G / ImMyst",
   "license": "ISC",
   "dependencies": {
     "app": "^0.1.0",
